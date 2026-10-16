@@ -103,26 +103,27 @@ optional tour of the results screen) or **No tutorial**. The tours can be replay
 ## Repository layout
 
 ```
-checkpoint/          the engine (Python package)
-  pauli_tools.py     propagation and the T rule
-  circuits.py        payload and checked-circuit builder (gated and merged right edges)
-  noise.py           noise parameters, Aer noise model, idle insertion, paulice noise model
-  simulate.py        exact density-matrix evaluation, analytic readout
-  metrics.py         post-selection, Hellinger fidelity, Pareto front
-  engine.py          public API: evaluate, propagate_check, evaluate_layouts
-  par.py             qiskit-paulice par (cached in data/paulice_cache)
-  landscape.py       solution landscapes for the histograms (cached in data/landscapes)
-  codegen.py         Qiskit source for the live code panel
-  server.py          FastAPI server for the browser front end
-web/                 front end (plain HTML, CSS, JS; no build step); manual.html is the user manual,
-                     fonts/ holds the bundled fonts
-levels/              one JSON file per puzzle
-data/                precomputed landscapes and paulice results
-experiments/         the brief's required experiment: script, notebook, results
-scripts/             calibrate_levels.py, precompute_landscapes.py, level_report.py
-tests/               engine, propagation and per-level learning-moment tests
-docs/                level design (generated), presentation outline
-REPORT.pdf           the written report
+checkpoint/                      the engine (Python package)
+  pauli_tools.py                 propagation and the T rule
+  circuits.py                    payload and checked-circuit builder (gated and merged right edges)
+  noise.py                       noise parameters, Aer noise model, idle insertion, paulice noise model
+  simulate.py                    exact density-matrix evaluation, analytic readout
+  metrics.py                     post-selection, Hellinger fidelity, Pareto front
+  engine.py                      public API: evaluate, propagate_check, evaluate_layouts
+  par.py                         qiskit-paulice par (cached in data/paulice_cache)
+  landscape.py                   solution landscapes for the histograms (cached in data/landscapes)
+  codegen.py                     Qiskit source for the live code panel
+  server.py                      FastAPI server for the browser front end
+web/                             front end (plain HTML, CSS, JS; no build step); manual.html is the user manual,
+                                 fonts/ holds the bundled fonts
+levels/                          one JSON file per puzzle
+data/                            precomputed landscapes and paulice results
+experiments/                     the brief's required experiment: script, notebook, results
+scripts/                         calibrate_levels.py, precompute_landscapes.py, level_report.py
+tests/                           engine, propagation and per-level learning-moment tests
+docs/                            level design (generated), presentation outline
+REPORT.pdf                       the written report
+Checkpoint_Presentation.mp4      Video presentation
 ```
 
 ## Tests
@@ -150,3 +151,7 @@ obeying the T rule on the others, and writes CSVs, plots and a summary to `exper
 The code, levels, data and documentation are licensed under the Apache License 2.0 (see `LICENSE`), the
 same license as Qiskit. The fonts bundled in `web/fonts/` keep their own SIL Open Font License 1.1; each
 license text sits next to its font.
+
+## Hackathon Submissions
+
+Written report: REPORT.pdf · Video presentation: Checkpoint_Presentation.mp4
