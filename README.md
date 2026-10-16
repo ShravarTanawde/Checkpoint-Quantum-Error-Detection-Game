@@ -13,6 +13,9 @@ As in Zachtronics games, the three are optimised separately, and the results scr
 layout sits among every other layout the engine evaluated, with the fidelity against yield trade-off
 drawn as a map.
 
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/820efef6-68ef-406d-8c1a-87eb8e9c7863" />
+
+
 ## Quick start
 
 Needs Python 3.12 or newer (tested on 3.12, 3.13 and 3.14). From the repository root:
@@ -144,10 +147,3 @@ obeying the T rule on the others, and writes CSVs, plots and a summary to `exper
 The code, levels, data and documentation are licensed under the Apache License 2.0 (see `LICENSE`), the
 same license as Qiskit. The fonts bundled in `web/fonts/` keep their own SIL Open Font License 1.1; each
 license text sits next to its font.
-
-## Submission checklist (from the brief)
-
-- [x] Complete, runnable source code
-- [ ] Recorded presentation (outline in `docs/presentation_outline.md`)
-- [x] Written report: [`REPORT.pdf`](REPORT.pdf) (8 pages)
-- [ ] Public GitHub repository; submit the link
