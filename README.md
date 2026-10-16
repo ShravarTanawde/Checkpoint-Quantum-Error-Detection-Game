@@ -97,6 +97,9 @@ optional tour of the results screen) or **No tutorial**. The tours can be replay
   (`NoiseParams.from_backend`). The organizers did not announce a common noise model, so the game and
   the experiment use these documented models.
 
+  <img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/6810dfa2-5d19-4633-a69d-ad050ef65ba1" />
+
+
 ## Repository layout
 
 ```
