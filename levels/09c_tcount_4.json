@@ -1,0 +1,177 @@
+{
+  "id": "09c",
+  "order": 9.2,
+  "title": "T-Count Study: 4 Gates",
+  "series": "T-count",
+  "lesson": "More non-Clifford gates can make useful checks harder to place.",
+  "brief": "The mirror circuit now contains two T gates and two T† gates. The data circuit follows the same design family, but more positions constrain which Pauli checks are legal. Protect it with up to two checks.",
+  "learning_moment": "Each T/T† site adds another point where a crossing check must be I or Z on that qubit. Useful X checks may still be placed on other spans, but some paths are no longer available. Compare Fidelity, Yield, and Cost with Puzzles 09a and 09b. Be careful with the conclusion: this experiment changes the circuit as well as the T count, so it shows how this family behaves under this noise model, not a universal law that Fidelity must fall with every T gate.",
+  "hint": "Look at the T/T† sites first. Find where an X check would still be X when it reaches one. Then try a shorter or different span that stays legal. A check can start on two qubits.",
+  "reflection": "Across the series, what changed in legal check placements, Fidelity, and Yield? What else changed besides T count?",
+  "noise_note": "Most modeled errors are phase flips (Z errors).",
+  "n_qubits": 4,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "t",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "t",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "tdg",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "tdg",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z",
+      "X"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 2
+  },
+  "goal": {
+    "fidelity": 0.9,
+    "min_yield": 0.85
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.015,
+    "p_idle": 0.002,
+    "p_readout": 0.008,
+    "bias": "Z",
+    "label": "dephasing-dominated (Z-biased) level noise, same for the whole series"
+  },
+  "par": "none",
+  "landscape": {
+    "max_checks": 2,
+    "seed": 9
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 0,
+        "right": 10,
+        "paulis": {
+          "3": "Z"
+        }
+      },
+      {
+        "left": 8,
+        "right": 10,
+        "paulis": {
+          "0": "X",
+          "1": "X"
+        }
+      }
+    ],
+    "explanation": [
+      "With four T and T† gates, an X check is blocked almost everywhere.",
+      "The last CNOT between q0 and q1 comes after every T gate, so a short check from slot 8, X on q0 and q1, can watch it for phase flips.",
+      "The other check, Z on q3 across the whole circuit, sees no phase flips at all. It helps another way: it ends at the readout, so it asks whether q3 is still 0 and catches readout flips on q3.",
+      "Together they just reach the target. Compare with Puzzles 09a and 09b."
+    ]
+  }
+}

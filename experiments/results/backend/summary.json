@@ -1,0 +1,225 @@
+{
+ "noise": {
+  "label": "GenericBackendV2(12 qubits, seed 2026) calibration, layout [0,1,2,3]",
+  "p1": 9.782148795144257e-05,
+  "p2": 0.0022297712446861136,
+  "p_idle": 0.001794000763484238,
+  "p_readout": 0.002119470347909906,
+  "bias": null,
+  "overrides": {
+   "2q": [
+    {
+     "qubits": [
+      0,
+      1
+     ],
+     "p": 0.0018865008360869273
+    },
+    {
+     "qubits": [
+      0,
+      2
+     ],
+     "p": 0.0025415797358242483
+    },
+    {
+     "qubits": [
+      0,
+      3
+     ],
+     "p": 0.0017116316359096517
+    },
+    {
+     "qubits": [
+      1,
+      2
+     ],
+     "p": 0.0019179627535479793
+    },
+    {
+     "qubits": [
+      1,
+      3
+     ],
+     "p": 0.0030182161809445274
+    },
+    {
+     "qubits": [
+      2,
+      3
+     ],
+     "p": 0.00300366353874173
+    }
+   ],
+   "readout": [
+    {
+     "qubit": 0,
+     "p": 0.0024348055623474277
+    },
+    {
+     "qubit": 1,
+     "p": 0.0007316323673180147
+    },
+    {
+     "qubit": 2,
+     "p": 0.0018041351334723845
+    },
+    {
+     "qubit": 3,
+     "p": 0.003289044544236358
+    }
+   ]
+  }
+ },
+ "payloads": {
+  "0": {
+   "width": 4,
+   "depth": 6,
+   "t_count": 0,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    },
+    "stabilizer": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.973028,
+    "yield": 1.0,
+    "state_fidelity": 0.981085,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1760
+  },
+  "2": {
+   "width": 4,
+   "depth": 8,
+   "t_count": 2,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.965908,
+    "yield": 1.0,
+    "state_fidelity": 0.973896,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1407
+  },
+  "4": {
+   "width": 4,
+   "depth": 10,
+   "t_count": 4,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.955421,
+    "yield": 1.0,
+    "state_fidelity": 0.963309,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1186
+  },
+  "8": {
+   "width": 4,
+   "depth": 10,
+   "t_count": 8,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.961892,
+    "yield": 1.0,
+    "state_fidelity": 0.969843,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 866
+  }
+ },
+ "best_by_t": {
+  "0": {
+   "noise": "backend",
+   "t_count": 0,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.996643,
+   "yield": 0.95929,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 4,
+   "extra_depth": 3,
+   "cost": 6,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"0\": \"Z\", \"2\": \"Z\"}}, {\"left\": 0, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}]"
+  },
+  "2": {
+   "noise": "backend",
+   "t_count": 2,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.990055,
+   "yield": 0.967205,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 3,
+   "extra_depth": 1,
+   "cost": 5,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}, {\"left\": 1, \"right\": 10, \"paulis\": {\"2\": \"X\"}}]"
+  },
+  "4": {
+   "noise": "backend",
+   "t_count": 4,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.982038,
+   "yield": 0.943621,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 5,
+   "extra_depth": 3,
+   "cost": 7,
+   "merged_checks": 1,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"3\": \"Z\"}}, {\"left\": 0, \"right\": 9, \"paulis\": {\"1\": \"Z\", \"3\": \"X\"}}]"
+  },
+  "8": {
+   "noise": "backend",
+   "t_count": 8,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.983676,
+   "yield": 0.971158,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 3,
+   "extra_depth": 0,
+   "cost": 5,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"3\": \"Z\"}}, {\"left\": 5, \"right\": 10, \"paulis\": {\"0\": \"Z\", \"1\": \"Z\"}}]"
+  }
+ }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "06",
+  "order": 6,
+  "title": "Follow the Pauli",
+  "lesson": "Gates transform a check as it moves through the circuit.",
+  "brief": "You can start only Z checks. Place one before different gates and watch how the game calculates its end edge. The end edge is determined by the gates inside the check's span.",
+  "learning_moment": "The check's start and end edges must describe the same measurement carried through the intervening gates. The game calculates this transformation for you. For example, H swaps X and Z; S maps X to Y (and maps Y to −X); CNOT can spread an X from its control to its target and a Z from its target back to its control. The mathematical rule is U P U†, but you can learn the behavior by watching the edge change. If a check ends at the final readout and its end edge contains only Z and identity, it may be merged into the measured parity without extra end-edge gates.",
+  "hint": "Start a Z check on q1 just before its H gate. Drag its end to different slots and watch the end edge change. Try the same around S and CNOT. To meet the goal, find an end edge that is Z only at the last slot.",
+  "reflection": "Which gates changed the Pauli between the start and end edges?",
+  "noise_note": "The model spreads errors across the gates using the same base rates.",
+  "n_qubits": 3,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "s",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.975,
+    "min_yield": 0.93
+  },
+  "noise": {
+    "p1": 0.001,
+    "p2": 0.02,
+    "p_idle": 0.002,
+    "p_readout": 0.005,
+    "label": "uniform level noise"
+  },
+  "par": "paulice",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 6
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 0,
+        "right": 6,
+        "paulis": {
+          "0": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "Watch how one Pauli changes: H turns Z into X, the CNOT copies the X onto q1, the H on q1 turns that X back into Z, and S leaves Z alone. The final H on q0 turns its X into Z.",
+      "So a Z on q0 at slot 0 ends at the readout as Z on q0 and q1, asking whether q0 and q1 agree, which every correct result does.",
+      "Starting on q1 before its H instead ends with a Y in the end edge, which cannot use the final readout."
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "id": "00",
+  "order": 0,
+  "title": "Why Check?",
+  "lesson": "Noise makes some results wrong. A check finds many of them and discards them.",
+  "brief": "This circuit copies q0 onto q1. q0 starts at 0, so the correct result is always 00. The CNOT is noisy, so some runs come out wrong.",
+  "learning_moment": "Without checks, noise turns some results into 01, 10 or 11. A check cannot fix those runs, but it can notice many of them and discard them. What is left is more often correct: that is Fidelity. You also keep fewer runs: that is Yield. This check asks whether q0 and q1 are still equal, so it catches a flip on one qubit; two flips at once (11) can still slip through.",
+  "hint": "Drag a Z check onto q1 at slot 0, then drag its handle to slot 1. Verify it and test it under noise.",
+  "reflection": "Which wrong results disappeared, and which one slipped through?",
+  "noise_note": "The one CNOT is very noisy on purpose, so wrong results are easy to see.",
+  "tutorial": {
+    "pauli": "Z",
+    "qubit": 1,
+    "start": 0,
+    "end": 1
+  },
+  "show_outputs": true,
+  "n_qubits": 2,
+  "moments": [
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.975,
+    "min_yield": 0.9
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.005,
+    "p_idle": 0.001,
+    "p_readout": 0.005,
+    "overrides": {
+      "2q": [
+        {
+          "qubits": [
+            0,
+            1
+          ],
+          "p": 0.05
+        }
+      ]
+    },
+    "label": "level noise with one very noisy CNOT (q0-q1)"
+  },
+  "par": "none",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 0
+  },
+  "par_note": "No automated reference in this first puzzle: compare your layout with the circuit that has no checks.",
+  "solution": {
+    "checks": [
+      {
+        "left": 0,
+        "right": 1,
+        "paulis": {
+          "1": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "Correct results are always 00, so q0 and q1 always agree.",
+      "A Z check started on q1 becomes Z on q0 and q1 after the CNOT. It ends at the last slot, so it uses the final readout to ask: are q0 and q1 still equal? Any run where only one of them flipped is discarded.",
+      "A flip on both qubits (11) keeps them equal, so that one slips through. That is why Fidelity rises but does not reach the top."
+    ]
+  }
+}

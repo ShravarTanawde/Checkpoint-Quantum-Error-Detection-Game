@@ -1,0 +1,165 @@
+{
+ "noise": {
+  "label": "uniform depolarizing, p2 = 0.01",
+  "p1": 0.0005,
+  "p2": 0.01,
+  "p_idle": 0.001,
+  "p_readout": 0.01,
+  "bias": null,
+  "overrides": {
+   "2q": [],
+   "readout": []
+  }
+ },
+ "payloads": {
+  "0": {
+   "width": 4,
+   "depth": 6,
+   "t_count": 0,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    },
+    "stabilizer": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.907268,
+    "yield": 1.0,
+    "state_fidelity": 0.944185,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1760
+  },
+  "2": {
+   "width": 4,
+   "depth": 8,
+   "t_count": 2,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.902809,
+    "yield": 1.0,
+    "state_fidelity": 0.939512,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1407
+  },
+  "4": {
+   "width": 4,
+   "depth": 10,
+   "t_count": 4,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.896585,
+    "yield": 1.0,
+    "state_fidelity": 0.933,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1186
+  },
+  "8": {
+   "width": 4,
+   "depth": 10,
+   "t_count": 8,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.898353,
+    "yield": 1.0,
+    "state_fidelity": 0.934852,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 866
+  }
+ },
+ "best_by_t": {
+  "0": {
+   "noise": "uniform",
+   "t_count": 0,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.982694,
+   "yield": 0.872532,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 4,
+   "extra_depth": 3,
+   "cost": 6,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"0\": \"Z\", \"2\": \"Z\"}}, {\"left\": 0, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}]"
+  },
+  "2": {
+   "noise": "uniform",
+   "t_count": 2,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.968066,
+   "yield": 0.892484,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 3,
+   "extra_depth": 1,
+   "cost": 5,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}, {\"left\": 0, \"right\": 10, \"paulis\": {\"2\": \"Z\"}}]"
+  },
+  "4": {
+   "noise": "uniform",
+   "t_count": 4,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.951989,
+   "yield": 0.900089,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 3,
+   "extra_depth": 1,
+   "cost": 5,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 1, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}, {\"left\": 0, \"right\": 10, \"paulis\": {\"3\": \"Z\"}}]"
+  },
+  "8": {
+   "noise": "uniform",
+   "t_count": 8,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.952644,
+   "yield": 0.901241,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 3,
+   "extra_depth": 1,
+   "cost": 5,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 1, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}, {\"left\": 0, \"right\": 10, \"paulis\": {\"3\": \"Z\"}}]"
+  }
+ }
+}

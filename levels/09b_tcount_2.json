@@ -1,0 +1,154 @@
+{
+  "id": "09b",
+  "order": 9.1,
+  "title": "T-Count Study: 2 Gates",
+  "series": "T-count",
+  "lesson": "T gates can remove useful check paths.",
+  "brief": "This is the same mirror-circuit family, now with one T and one T†. Use up to two checks and keep Yield at or above the target. Empty columns are unused T sites.",
+  "learning_moment": "A check must still be I or Z on the T qubit when it crosses T or T†. That can block an X-type check that would otherwise flag the phase-flip errors dominant in this noise model. Compare your best result with Puzzle 09a, which has no T gates: how much protection remains, and how much Yield does it cost? The outcome depends on the circuit, the legal check paths, and the noise model.",
+  "hint": "Find a check that would catch phase flips, then see whether its propagated Pauli is allowed at the T/T† site. Can you keep the useful part of the check without crossing T as X or Y?",
+  "reflection": "Across the series, what changed in legal check placements, Fidelity, and Yield? What else changed besides T count?",
+  "noise_note": "Most modeled errors are phase flips (Z errors).",
+  "n_qubits": 4,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "t",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [],
+    [],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "tdg",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z",
+      "X"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 2
+  },
+  "goal": {
+    "fidelity": 0.93,
+    "min_yield": 0.85
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.015,
+    "p_idle": 0.002,
+    "p_readout": 0.008,
+    "bias": "Z",
+    "label": "dephasing-dominated (Z-biased) level noise, same for the whole series"
+  },
+  "par": "none",
+  "landscape": {
+    "max_checks": 2,
+    "seed": 9
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 0,
+        "right": 10,
+        "paulis": {
+          "2": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "The two T gates are on q1, so an X check there would be blocked.",
+      "This check starts as Z on q2. The first H turns it into X, and it spreads only onto q3, never onto q1. So it sees phase flips on the CNOTs that touch q2 and q3 and stays legal.",
+      "It ends at the readout as Z on q2."
+    ]
+  }
+}

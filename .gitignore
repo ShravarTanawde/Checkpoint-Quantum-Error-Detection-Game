@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# tools
+.pytest_cache/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# half-written cache files (data/ itself is shipped on purpose)
+*.json.tmp
+
+# OS
+.DS_Store
+Thumbs.db

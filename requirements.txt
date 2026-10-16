@@ -1,0 +1,14 @@
+# Versions this repository was built and tested with (Python 3.13).
+# Pinned on purpose: scores are exact, so the same versions reproduce the same numbers.
+qiskit==2.5.2
+qiskit-aer==0.17.2
+qiskit-paulice==0.2.1
+numpy==2.5.3
+fastapi==0.143.0
+uvicorn==0.53.0
+matplotlib==3.11.2
+pytest
+# only needed to re-execute the experiment notebook from the command line
+nbformat
+nbclient
+ipykernel

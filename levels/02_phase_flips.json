@@ -1,0 +1,110 @@
+{
+  "id": "02",
+  "order": 2,
+  "title": "Which Errors Can You See?",
+  "lesson": "The Pauli you choose determines which errors a check can flag.",
+  "brief": "This circuit is dominated by phase-flip errors, represented by Z. You now have X and Z checks. Try each type and compare what happens to Fidelity and Yield. Check edges must sit between slots 1 and 4.",
+  "learning_moment": "A Z check commutes with a Z error, so that error does not flip the check's result. An X check anticommutes with Z, so a phase flip can make the check flag the run. The check type matters because it determines which errors are visible to the check at that point in the circuit. This is not a guarantee that X is always best: it is useful here because this puzzle's noise model is dominated by Z errors.",
+  "hint": "First try a Z check across all three CNOTs. Test it under noise and note the Yield. Then try an X check across the same span. Which one flags more of the phase-flip errors?",
+  "reflection": "Which Pauli type flagged more of the errors in this puzzle, and why?",
+  "noise_note": "Most modeled errors are phase flips (Z errors).",
+  "n_qubits": 2,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          1
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z",
+      "X"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.95,
+    "min_yield": 0.85
+  },
+  "noise": {
+    "p1": 0.001,
+    "p2": 0.03,
+    "p_idle": 0.002,
+    "p_readout": 0.005,
+    "bias": "Z",
+    "label": "dephasing-dominated (Z-biased) level noise"
+  },
+  "par": "paulice",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 2
+  },
+  "slots": {
+    "min": 1,
+    "max": 4
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 1,
+        "right": 4,
+        "paulis": {
+          "0": "X"
+        }
+      }
+    ],
+    "explanation": [
+      "Most errors here are phase flips (Z). A Z check cannot see them, because Z commutes with Z. An X check can.",
+      "X on q0 from slot 1 grows to X on q0 and q1 at each CNOT, so it watches both qubits across all three CNOTs.",
+      "Where the check is X on both qubits, a phase flip on both at once cancels out, so the check misses it. The house rule keeps edges between slots 1 and 4, so this check ends with gates."
+    ]
+  }
+}

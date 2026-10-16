@@ -1,0 +1,143 @@
+{
+  "id": "05",
+  "order": 5,
+  "title": "When More Checks Stop Helping",
+  "lesson": "Every extra check has to earn the cost it adds.",
+  "brief": "You have four available checks. Add them one at a time, but keep Yield above the required target. Find out when another check stops being worth its cost.",
+  "learning_moment": "The first check may catch many errors. A second may help, too. But later checks can add very little Fidelity improvement while rejecting more runs and adding gates of their own. Compare layouts with one, two, three, and four checks. The best choice is not automatically the layout with the most checks; it is a layout that meets the required Fidelity and Yield targets without unnecessary overhead.",
+  "hint": "Correct results always have q1 = 0 and q0 = q3 (see the i button). Build one check for each rule. A check that ends at the last slot as Z on q1 tests the first rule. Then find one that ends as Z on q0 and q3.",
+  "reflection": "Which extra check gave the smallest benefit compared with the Yield and Cost it added?",
+  "noise_note": "The model spreads errors across the gates using the same base rates.",
+  "n_qubits": 4,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          3
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z",
+      "X"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 4
+  },
+  "goal": {
+    "fidelity": 0.985,
+    "min_yield": 0.87
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.012,
+    "p_idle": 0.002,
+    "p_readout": 0.01,
+    "label": "uniform level noise"
+  },
+  "par": "paulice",
+  "landscape": {
+    "max_checks": 4,
+    "seed": 5
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 0,
+        "right": 6,
+        "paulis": {
+          "0": "Z",
+          "2": "Z"
+        }
+      },
+      {
+        "left": 1,
+        "right": 6,
+        "paulis": {
+          "1": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "Correct results always have q1 = 0 and q0 = q3 (see the i button). Build one check for each rule.",
+      "Check A starts on two qubits, Z on q0 and q2. It changes many times on the way and ends at the readout as Z on q0 and q3: it asks whether q0 and q3 still agree.",
+      "Check B is Z on q1 from slot 1 and ends as Z on q1: it asks whether q1 is still 0.",
+      "Each check alone misses some CNOTs; together they watch every one. A third check adds almost no Fidelity and costs Yield."
+    ]
+  }
+}

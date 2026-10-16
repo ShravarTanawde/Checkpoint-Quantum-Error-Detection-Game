@@ -1,0 +1,165 @@
+{
+ "noise": {
+  "label": "game T-series noise (Z-biased)",
+  "p1": 0.0005,
+  "p2": 0.015,
+  "p_idle": 0.002,
+  "p_readout": 0.008,
+  "bias": "Z",
+  "overrides": {
+   "2q": [],
+   "readout": []
+  }
+ },
+ "payloads": {
+  "0": {
+   "width": 4,
+   "depth": 6,
+   "t_count": 0,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    },
+    "stabilizer": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.895823,
+    "yield": 1.0,
+    "state_fidelity": 0.924547,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1760
+  },
+  "2": {
+   "width": 4,
+   "depth": 8,
+   "t_count": 2,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.888147,
+    "yield": 1.0,
+    "state_fidelity": 0.916558,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1407
+  },
+  "4": {
+   "width": 4,
+   "depth": 10,
+   "t_count": 4,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.877208,
+    "yield": 1.0,
+    "state_fidelity": 0.905179,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 1186
+  },
+  "8": {
+   "width": 4,
+   "depth": 10,
+   "t_count": 8,
+   "reference": {
+    "statevector": {
+     "0000": 1.0
+    }
+   },
+   "baseline": {
+    "fidelity": 0.882222,
+    "yield": 1.0,
+    "state_fidelity": 0.910398,
+    "ancillas": 0,
+    "extra_2q": 0,
+    "extra_depth": 0,
+    "cost": 0
+   },
+   "legal_single_checks": 866
+  }
+ },
+ "best_by_t": {
+  "0": {
+   "noise": "series",
+   "t_count": 0,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.990015,
+   "yield": 0.853313,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 4,
+   "extra_depth": 3,
+   "cost": 6,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"0\": \"Z\", \"2\": \"Z\"}}, {\"left\": 0, \"right\": 10, \"paulis\": {\"0\": \"Z\", \"3\": \"Z\"}}]"
+  },
+  "2": {
+   "noise": "series",
+   "t_count": 2,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.950685,
+   "yield": 0.893178,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 3,
+   "extra_depth": 1,
+   "cost": 5,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 0, \"right\": 10, \"paulis\": {\"2\": \"Z\"}}, {\"left\": 0, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}]"
+  },
+  "4": {
+   "noise": "series",
+   "t_count": 4,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.909696,
+   "yield": 0.873632,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 4,
+   "extra_depth": 1,
+   "cost": 6,
+   "merged_checks": 1,
+   "checks": "[{\"left\": 0, \"right\": 9, \"paulis\": {\"3\": \"X\"}}, {\"left\": 8, \"right\": 10, \"paulis\": {\"0\": \"X\", \"1\": \"X\"}}]"
+  },
+  "8": {
+   "noise": "series",
+   "t_count": 8,
+   "method": "hand",
+   "targets": "",
+   "k": 2,
+   "fidelity": 0.908659,
+   "yield": 0.881891,
+   "state_fidelity": null,
+   "ancillas": 2,
+   "extra_2q": 4,
+   "extra_depth": 3,
+   "cost": 6,
+   "merged_checks": 2,
+   "checks": "[{\"left\": 9, \"right\": 10, \"paulis\": {\"1\": \"Z\", \"3\": \"Z\"}}, {\"left\": 8, \"right\": 10, \"paulis\": {\"0\": \"X\", \"1\": \"X\"}}]"
+  }
+ }
+}

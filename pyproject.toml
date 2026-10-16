@@ -1,0 +1,25 @@
+[project]
+name = "checkpoint-qed"
+version = "0.1.0"
+description = "Checkpoint: a Zachtronics-style puzzle game about quantum error detection with spacetime codes (Qiskit Fall Fest 2026, Advanced Track)"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.12"
+dependencies = [
+  "qiskit>=2.5",
+  "qiskit-aer>=0.17",
+  "qiskit-paulice>=0.2.1",
+  "numpy",
+  "fastapi",
+  "uvicorn",
+  "matplotlib",
+]
+
+[project.scripts]
+checkpoint = "checkpoint.server:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools]
+packages = ["checkpoint"]

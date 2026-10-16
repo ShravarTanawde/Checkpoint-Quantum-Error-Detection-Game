@@ -1,0 +1,137 @@
+{
+  "id": "08",
+  "order": 8,
+  "title": "The T-Gate Rule",
+  "lesson": "A T gate restricts which Pauli checks can pass through it.",
+  "brief": "This mirror circuit applies T and later undoes it with T†, so the ideal output is 000. Try to span the T gate with different Pauli checks and see which paths are allowed.",
+  "learning_moment": "H, S, and CNOT are Clifford gates: they transform a Pauli into another Pauli, so the game can calculate a matching end edge. T is different. Z commutes with T and remains Z, but X or Y on that qubit generally becomes a combination of Paulis rather than one Pauli. This game's check must stay a single Pauli, so it allows a check to cross T or T† only when the propagated operator on that qubit is I or Z. This is a restriction on the check path, not a claim that the circuit itself cannot use T gates.",
+  "hint": "Try spanning a T gate with X on q1, and read the notice (WHY? gives the full reason). Then find a path where the Pauli is Z (or I) at both T gates. You may need a check that starts on two qubits: drop a second piece in the same slot.",
+  "reflection": "Which Pauli was present on the T qubit when the check crossed it?",
+  "noise_note": "The model spreads errors across the gates using the same base rates.",
+  "n_qubits": 3,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "t",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "tdg",
+        [
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          1
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z",
+      "X"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.94,
+    "min_yield": 0.9
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.02,
+    "p_idle": 0.002,
+    "p_readout": 0.005,
+    "label": "uniform level noise"
+  },
+  "par": "none",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 8
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 3,
+        "right": 8,
+        "paulis": {
+          "0": "X",
+          "2": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "Correct results are always 000. Both T gates are on q1, so the check must be Z or nothing on q1 when it passes them.",
+      "This check starts on two qubits after the first T gate: X on q0 and Z on q2. The CNOTs between q1 and q2 copy the Z onto q1 and then take it off again, so the check is nothing on q1 at the T† gate: legal.",
+      "It ends at the readout as Z on q0, q1 and q2."
+    ]
+  }
+}

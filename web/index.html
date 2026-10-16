@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkpoint</title>
+<meta name="description" content="Checkpoint is an interactive puzzle game about quantum error detection. Place Pauli checks on noisy circuits, explore the fidelity-yield trade-off, and learn how gates constrain valid checks.">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="monitor">
+  <div class="glass">
+    <div class="screen" id="screen">
+      <div id="view"></div>
+      <div id="layer"></div>
+      <div id="toasts" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+  <div class="strip" id="strip"></div>
+</div>
+<div id="tour"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

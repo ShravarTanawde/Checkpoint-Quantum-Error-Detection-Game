@@ -1,0 +1,101 @@
+{
+  "id": "04",
+  "order": 4,
+  "title": "Find the Hot Gate",
+  "lesson": "Where you place a check can matter more than how many checks you use.",
+  "brief": "This four-qubit GHZ circuit has one CNOT that is much noisier than the others. Its error-rate badge is highlighted. You have one check, so choose its span carefully.",
+  "learning_moment": "The goal is not to cover every gate equally. A check is valuable when it can flag the errors that are likely to happen. Here, covering the highlighted CNOT is more useful than spending the check on a group of comparatively reliable gates. Read the error-rate badges, then compare your Fidelity and Yield with a check placed elsewhere.",
+  "hint": "Find the CNOT with the orange error-rate badge first. Try a check that covers it, then try one somewhere else and compare.",
+  "reflection": "Did covering the hottest gate help more than covering several quieter gates?",
+  "noise_note": "One two-qubit gate is much noisier than the others; look for its highlighted error-rate badge.",
+  "n_qubits": 4,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.95,
+    "min_yield": 0.9
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.004,
+    "p_idle": 0.001,
+    "p_readout": 0.005,
+    "overrides": {
+      "2q": [
+        {
+          "qubits": [
+            2,
+            3
+          ],
+          "p": 0.08
+        }
+      ]
+    },
+    "label": "level noise with one hot CNOT (q2-q3)"
+  },
+  "par": "paulice",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 4
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 2,
+        "right": 4,
+        "paulis": {
+          "2": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "One CNOT, between q2 and q3, is much noisier than the rest (the orange badge).",
+      "A Z check on q2 from slot 2 covers the last two CNOTs, including the hot one. It ends at the readout as Z on q1 and q2, asking whether q1 and q2 still agree.",
+      "A check on the quiet CNOTs instead watches errors that rarely happen, so it gains much less."
+    ]
+  }
+}

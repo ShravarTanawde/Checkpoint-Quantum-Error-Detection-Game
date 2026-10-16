@@ -1,0 +1,208 @@
+{
+  "id": "11",
+  "order": 11,
+  "title": "Final Challenge",
+  "lesson": "Combine check placement, gate rules, Yield, and overhead in one layout.",
+  "brief": "This five-qubit mirror circuit has a T/T† pair, one especially noisy CNOT, and room for only two checks. The ideal output is 00000. Meet the Fidelity and Yield targets with the two checks available.",
+  "learning_moment": "The strongest layouts account for all three constraints: they cover the high-error CNOT, remain legal when a check crosses T/T†, and end at the final readout so their ancillas do not wait through idle noise. There may be several layouts that meet the goals, with different resource costs. The lesson is to compare the full outcome, not to maximize the number of checks or Fidelity alone.",
+  "hint": "First find the CNOT with the orange badge. Trace the Pauli that would detect its errors, and check every T/T† crossing. Checks that end at the last slot use the final readout, so their ancilla does not wait. A check can start on two qubits.",
+  "reflection": "Which trade-off mattered most in your final layout: detection, Yield, legality, or overhead?",
+  "noise_note": "One two-qubit gate is much noisier than the others; look for its highlighted error-rate badge.",
+  "n_qubits": 5,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ],
+      [
+        "h",
+        [
+          4
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "t",
+        [
+          1
+        ]
+      ],
+      [
+        "s",
+        [
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ],
+      [
+        "cx",
+        [
+          3,
+          4
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ],
+      [
+        "cx",
+        [
+          3,
+          4
+        ]
+      ]
+    ],
+    [
+      [
+        "tdg",
+        [
+          1
+        ]
+      ],
+      [
+        "sdg",
+        [
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ],
+      [
+        "h",
+        [
+          4
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z",
+      "X"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 2
+  },
+  "goal": {
+    "fidelity": 0.95,
+    "min_yield": 0.82
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.008,
+    "p_idle": 0.002,
+    "p_readout": 0.008,
+    "overrides": {
+      "2q": [
+        {
+          "qubits": [
+            2,
+            3
+          ],
+          "p": 0.05
+        }
+      ]
+    },
+    "label": "level noise with one hot CNOT (q2-q3)"
+  },
+  "par": "none",
+  "landscape": {
+    "max_checks": 2,
+    "seed": 11
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 0,
+        "right": 8,
+        "paulis": {
+          "2": "Z"
+        }
+      },
+      {
+        "left": 0,
+        "right": 8,
+        "paulis": {
+          "1": "Z",
+          "3": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "Correct results are always 00000. The hot CNOTs are between q2 and q3, and the T gates are on q1.",
+      "Check A starts as Z on q2. The first H turns it into X, so it watches q2 and q3 for Z and Y errors while staying off q1.",
+      "Check B starts on two qubits, Z on q1 and q3, and stays Z everywhere, so it is legal across T and T† and catches X and Y errors.",
+      "Both end at the readout, so their ancillas never wait. Together they see most of the hot CNOTs' errors."
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "id": "09a",
+  "order": 9.0,
+  "title": "T-Count Study: 0 Gates",
+  "series": "T-count",
+  "lesson": "Start with a Clifford-only reference before adding T gates.",
+  "brief": "This four-qubit mirror circuit is the reference case with no T gates. Protect it with up to two checks. You will compare it with versions that contain more T and T† gates. Empty columns mark the T sites used by the later versions.",
+  "learning_moment": "This is the baseline for the T-count study. Under this puzzle's phase-flip-heavy noise, X checks can flag Z errors. With no T gates, those checks have more freedom to span the circuit. Record the best Fidelity you can reach while keeping at least 85% of runs, then compare it with the following versions. This result is the starting point for the series, not a universal benchmark for every circuit.",
+  "hint": "Phase-flip errors are Z errors. Which Pauli anticommutes with Z? You have two checks; you may need both. Note Fidelity and Yield before moving on.",
+  "reflection": "Across the series, what changed in legal check placements, Fidelity, and Yield? What else changed besides T count?",
+  "noise_note": "Most modeled errors are phase flips (Z errors).",
+  "n_qubits": 4,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [],
+    [],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ],
+      [
+        "cx",
+        [
+          2,
+          3
+        ]
+      ]
+    ],
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ],
+      [
+        "h",
+        [
+          2
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z",
+      "X"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 2
+  },
+  "goal": {
+    "fidelity": 0.97,
+    "min_yield": 0.85
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.015,
+    "p_idle": 0.002,
+    "p_readout": 0.008,
+    "bias": "Z",
+    "label": "dephasing-dominated (Z-biased) level noise, same for the whole series"
+  },
+  "par": "paulice",
+  "landscape": {
+    "max_checks": 2,
+    "seed": 9
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 0,
+        "right": 10,
+        "paulis": {
+          "0": "Z"
+        }
+      },
+      {
+        "left": 0,
+        "right": 10,
+        "paulis": {
+          "2": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "Most errors here are phase flips. Each check starts as Z, but the first H turns it into X, so for most of the circuit both are X checks, which see phase flips.",
+      "One watches q0 and q1, the other q2 and q3, and both reach the middle CNOTs. The last H turns them back into Z, so both end at the readout.",
+      "With no T gates, nothing blocks an X check anywhere."
+    ]
+  }
+}

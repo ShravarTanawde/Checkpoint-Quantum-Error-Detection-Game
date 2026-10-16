@@ -1,0 +1,90 @@
+{
+  "id": "07",
+  "order": 7,
+  "title": "The Readout Blind Spot",
+  "lesson": "A check can miss errors that happen after it finishes.",
+  "brief": "The gates are relatively reliable, but the final measurements are noisy. Compare a gate-based check with a check that uses the final readout to calculate its syndrome.",
+  "learning_moment": "A gate-based check finishes before the data qubits are measured. It therefore cannot flag an error that happens only during the final readout. When a check's end edge contains only Z and identity and reaches the final slot, it can be merged into the readout: measured data bits contribute to the syndrome parity. This can make a single readout flip visible to the check without adding end-edge gates. But parity has a blind spot, too: two flips can cancel each other. Compare the Fidelity and Yield of the same check with final readout on and off.",
+  "hint": "Place one Z check that ends at the last slot. Click it to switch final readout off and on, and test both. Compare the result, not just the Fidelity.",
+  "reflection": "What readout errors became visible when the check used the final readout? Which errors could still escape?",
+  "noise_note": "Measurement errors are more likely than gate errors in this puzzle.",
+  "n_qubits": 3,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.96,
+    "min_yield": 0.84
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.01,
+    "p_idle": 0.001,
+    "p_readout": 0.04,
+    "label": "good gates, poor readout"
+  },
+  "par": "paulice",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 7
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 2,
+        "right": 4,
+        "paulis": {
+          "2": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "The readout is the noisy part here. A check that ends with gates finishes before the measurement, so it cannot see readout flips.",
+      "This Z check on q2 ends at the last slot as Z on q0, q1 and q2, so it uses the final readout: the three measured bits are part of its result. A single readout flip on any of them is caught.",
+      "Two flips at once cancel, so a few wrong results still slip through."
+    ]
+  }
+}

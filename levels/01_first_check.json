@@ -1,0 +1,95 @@
+{
+  "id": "01",
+  "order": 1,
+  "title": "First Check",
+  "lesson": "A check can reject suspicious runs, but it cannot repair them.",
+  "brief": "This Bell-pair circuit passes through three noisy CNOT gates. Add one Z check, then compare the result with the circuit that has no checks.",
+  "learning_moment": "Compare your layout with the circuit that has no checks. A check can make the measurement results we keep closer to the ideal results, but it does so by rejecting runs that trigger the check. It does not undo an error or repair the quantum state. For now, focus on the main trade-off: fidelity can rise while yield falls. If your check ends at readout, its Z-only end edge can be included in the final measurement parity instead of being built with extra gates; Puzzle 07 explores that option.",
+  "hint": "Drag one Z check across the three CNOTs. Verify it, test it under noise, and compare Fidelity and Yield with the no-check baseline.",
+  "reflection": "Did Fidelity rise? How much Yield did you give up to get that improvement?",
+  "noise_note": "The model spreads errors across the gates using the same base rates.",
+  "tutorial": {
+    "pauli": "Z",
+    "qubit": 1,
+    "start": 1,
+    "end": 4
+  },
+  "n_qubits": 2,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.965,
+    "min_yield": 0.9
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.02,
+    "p_idle": 0.001,
+    "p_readout": 0.005
+  },
+  "par": "paulice",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 1
+  },
+  "solution": {
+    "checks": [
+      {
+        "left": 1,
+        "right": 4,
+        "paulis": {
+          "1": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "Correct results are 00 and 11: q0 always equals q1.",
+      "A Z check on q1 from slot 1 changes at every CNOT (Z on q1, then Z on q0 and q1, and so on) and ends as Z on q0 and q1. At the readout it asks: are q0 and q1 still equal?",
+      "It watches all three CNOTs. Starting on q0 instead stays Z on q0 the whole way, so it misses flips on q1."
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "id": "03",
+  "order": 3,
+  "title": "How Long Should a Check Be?",
+  "lesson": "A longer check also exposes its ancilla to more noise.",
+  "brief": "Two CNOTs create a three-qubit GHZ state, followed by a long stretch of low-error gates. You have one check. Cover the errors worth catching without letting the check wait longer than it needs to. House rule: every check must end by slot 8, so none can use the final readout.",
+  "learning_moment": "A check's ancilla must stay coherent across the whole span between its start and end edges. While it waits, it can pick up idle noise of its own. In this puzzle, extending a check far beyond the two noisy CNOTs adds little useful detection, but gives the ancilla more time to suffer an error. That can cause clean runs to be rejected: Yield falls while Fidelity changes very little. A short check can be better than a long one.",
+  "hint": "The two CNOTs are where most of the useful protection is needed. Try ending your check just after it has covered them, then extend it and compare Yield.",
+  "reflection": "What changed when you extended the span without covering more noisy gates?",
+  "noise_note": "The model includes extra noise while a check's ancilla waits across its span.",
+  "n_qubits": 3,
+  "moments": [
+    [
+      [
+        "h",
+        [
+          0
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          0,
+          1
+        ]
+      ]
+    ],
+    [
+      [
+        "cx",
+        [
+          1,
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "s",
+        [
+          0
+        ]
+      ],
+      [
+        "s",
+        [
+          1
+        ]
+      ],
+      [
+        "s",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "sdg",
+        [
+          0
+        ]
+      ],
+      [
+        "sdg",
+        [
+          1
+        ]
+      ],
+      [
+        "sdg",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "s",
+        [
+          0
+        ]
+      ],
+      [
+        "s",
+        [
+          1
+        ]
+      ],
+      [
+        "s",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "sdg",
+        [
+          0
+        ]
+      ],
+      [
+        "sdg",
+        [
+          1
+        ]
+      ],
+      [
+        "sdg",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "s",
+        [
+          0
+        ]
+      ],
+      [
+        "s",
+        [
+          1
+        ]
+      ],
+      [
+        "s",
+        [
+          2
+        ]
+      ]
+    ],
+    [
+      [
+        "sdg",
+        [
+          0
+        ]
+      ],
+      [
+        "sdg",
+        [
+          1
+        ]
+      ],
+      [
+        "sdg",
+        [
+          2
+        ]
+      ]
+    ]
+  ],
+  "parts": {
+    "paulis": [
+      "Z"
+    ],
+    "max_weight": 2
+  },
+  "budget": {
+    "ancillas": 1
+  },
+  "goal": {
+    "fidelity": 0.956,
+    "min_yield": 0.915
+  },
+  "noise": {
+    "p1": 0.0005,
+    "p2": 0.02,
+    "p_idle": 0.02,
+    "p_readout": 0.005,
+    "label": "level noise with heavy idling"
+  },
+  "par": "none",
+  "landscape": {
+    "max_checks": 1,
+    "seed": 3
+  },
+  "slots": {
+    "min": 1,
+    "max": 8
+  },
+  "par_note": "No automated reference is shown for this puzzle: qiskit-paulice would end its check at the final readout, which this puzzle's house rule does not allow. Compare your layout with the no-check baseline and the other layouts evaluated by Checkpoint instead.",
+  "solution": {
+    "checks": [
+      {
+        "left": 1,
+        "right": 3,
+        "paulis": {
+          "1": "Z"
+        }
+      }
+    ],
+    "explanation": [
+      "The errors worth catching come from the two CNOTs; the later gates are quiet.",
+      "A Z check on q1 from slot 1 to slot 3 covers both CNOTs and ends right after them.",
+      "This check ends with gates, so its ancilla waits for its end edge, and idling is noisy here. Ending later catches almost nothing more but lets the ancilla pick up errors, so Yield falls."
+    ]
+  }
+}
