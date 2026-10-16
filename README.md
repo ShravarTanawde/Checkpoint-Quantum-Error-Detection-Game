@@ -115,7 +115,8 @@ data/                precomputed landscapes and paulice results
 experiments/         the brief's required experiment: script, notebook, results
 scripts/             calibrate_levels.py, precompute_landscapes.py, level_report.py
 tests/               engine, propagation and per-level learning-moment tests
-docs/                level design (generated), report and presentation outlines
+docs/                level design (generated), presentation outline
+REPORT.pdf           the written report
 ```
 
 ## Tests
@@ -148,5 +149,5 @@ license text sits next to its font.
 
 - [x] Complete, runnable source code
 - [ ] Recorded presentation (outline in `docs/presentation_outline.md`)
-- [ ] Written report (outline in `docs/report_outline.md`)
+- [x] Written report: [`REPORT.pdf`](REPORT.pdf) (8 pages)
 - [ ] Public GitHub repository; submit the link
